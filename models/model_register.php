@@ -18,7 +18,7 @@ static boolean function is_login_free($loginToCheck)
 	}
  }
 
-static function add_user($login, $name, $lastname, $password)
+static function add_new_user($login, $name, $lastname, $password)
 {
 	require_once "mysql_connect.php";
 	$login = mysqli_real_escape_string($mysqli, $login);
@@ -28,10 +28,9 @@ static function add_user($login, $name, $lastname, $password)
 
 	$sql = "INSERT INTO logins (pid, login, name, lastname, password) VALUES (NULL, '$login', '$name', '$lastname', '$password' ) ";
 	mysqli_query($mysqli, $sql);
-	
+	$mysqli->close();
 }
 
 }
-
 
 ?>
