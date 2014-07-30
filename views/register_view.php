@@ -32,7 +32,7 @@ if (isset($_REQUEST['doReg']))
 
 <div align="center">
     <?php if (!isset($_REQUEST['doReg']) || $errReg == true) {?>
-    <form action = "http://site1.com/register" method="post" >
+    <form action = "register" method="post" >
 
 
         <b>login:<b>   <input type="text" name="login" required="1" value=""><br><br>
