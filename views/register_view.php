@@ -28,18 +28,27 @@ if (isset($_REQUEST['doReg']))
 
 ?>
 </b></div>
-<h2 align="center">Заполните данные</h2>
+<h2 align="center">Registration form</h2>
 
 <div align="center">
     <?php if (!isset($_REQUEST['doReg']) || $errReg == true) {?>
     <form action = "http://site1.com/register" method="post" >
-        <b>login:<b>   <input type="text" name="login" required="1" value=""><br>
-        <b>password:<b><input type="password" name="passwd" required="1"><br>
-        <b>confirm:<b> <input type="password" name="passwdConfirm" value="" required="1"><br>
-        <b>name:<b>    <input type="text" name="name"  required="1" value=""><br>
-        <b>lastname:<b><input type="text" name="lastname"  required="1" value=""><br>
+
+
+        <b>login:<b>   <input type="text" name="login" required="1" value=""><br><br>
+
+
+        <b>password:<b><input type="password" name="passwd" required="1"><br><br>
+
+
+        <b>confirm:<b> <input type="password" name="passwdConfirm" value="" required="1"><br><br>
+
+
+        <b>name:<b>    <input type="text" name="name"  required="1" value=""><br><br>
+
+
+        <b>lastname:<b><input type="text" name="lastname"  required="1" value=""><br><br>
     <input type="submit" name="doReg" value="register"><br>
-              <?php  print_r($_POST); ?>
 
     </form>
 

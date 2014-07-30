@@ -17,44 +17,34 @@ Class Controller_Register extends controller
     {
 
         require_once "mysql_connect.php";
-        mysql_query('CREATE TABLE if not exists logins(id INT, login TEXT, name TEXT, lastname TEXT, password TEXT)')
-        or die("Mysql error: " . mysql_error()); echo "<br>";
-           print_r($_POST['login']);
-        echo "<br>";
+
         $search = $_POST['login'];
-        if ( mysql_query('SELECT * FROM logins WHERE login=$search' ) == 0 )
-        {
+        $sql = " SELECT * FROM logins WHERE login = '$search' ";
+        $r = mysqli_query($mysqli, $sql);
 
-            $login = $_POST['login'];
-            $name = $_POST['name'];
-            $lastname = $_POST['lastname'];
-            $password = $_POST['passwd'];
-            echo ("<br>Таких нет!<br>");
-            mysql_query('INSERT INTO logins SET id=2 login=$login name=$name lastname=$lastname password=$password');
-            echo "Registration complete !";
-            print_r ($_POST['login']);
-echo("</br>");
+        if (!($row = mysqli_fetch_assoc($r)))
+          {
+            $login = mysqli_real_escape_string($mysqli, $_POST['login']);
+            $name = mysqli_real_escape_string($mysqli, $_POST['name']);
+            $lastname = mysqli_real_escape_string($mysqli, $_POST['lastname']);
+            $password = mysqli_real_escape_string($mysqli, $_POST['passwd']);
 
-            $r = mysql_query('SELECT * FROM logins ORDER BY name') or die(mysql_error());
-            //print_r($result);
-            for ($data=array(); $row=mysql_fetch_assoc($r); $data[]=$row); echo "<pre>"; print_r($data); echo "<pre>";
-
-
-
-            echo("</br>");
-        } else
-        {
-            echo "Такой тип уже зареган 1111";
-
-
+            $sql = "INSERT INTO logins (pid, login, name, lastname, password) VALUES (NULL, '$login', '$name', '$lastname', '$password')";
+            mysqli_query($mysqli, $sql);
+            echo "<h3>Thank you!<br>
+             Registration completed successfully.<br>
+             Forum is loading...</h3>";
+           header( 'Refresh: 2; "forum" ' );
+          } else { echo "Choose another login, please.";
+            header( 'Refresh: 2; "register" ' );
         }
 
+           //  header('Location:http://' . $_SERVER['HTTP_HOST'] . '/');
+            //exit;
 
 
-        //2323
-     //   $this->view->generate('register_view.php', 'template_view.php');
-   //     print_r("2323");
-        echo ("АЗАЗЗА");
+
+
     }
 }
 
