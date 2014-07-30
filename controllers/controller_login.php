@@ -26,14 +26,11 @@ class Controller_Login extends controller
         if (!($row = mysqli_fetch_assoc($r))) {
 
 
-            echo "<h2>Wrong user name/password !</h2>";
+            echo "<h2>Wrong user name or password !</h2>";
         } else { echo "<h2>
         <?php header('Location: '. '/forum'); ?>
 
         </h2>";}
-
-
-        //echo "12";
     }
 }
 
