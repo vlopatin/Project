@@ -10,19 +10,17 @@ class Route
 {
     static function start()
     {
-
-
         $controller_name = 'login';
         $action_name = 'index';
 
         $routes = explode('/', $_SERVER['REQUEST_URI']);
-//print_r($routes);
+        //print_r($routes);
 
         // получаем имя контроллера
         if ( !empty($routes[1]) )
         {
               $controller_name = $routes[1];
-         //   print_r($routes[1]);
+      //     print_r($routes[1]);
         }
 
         // получаем имя экшена
@@ -44,8 +42,7 @@ class Route
 
         if (file_exists($model_path))
         {
-            require_once "models/" . $model_file;
-          #  echo "111";
+           require_once "models/" . $model_file;
         }
 
         // цепляем файл с классом контроллера
@@ -57,7 +54,7 @@ class Route
             require_once "controllers/" . $controller_file;
         } else
         {
-        // Route::ErrorPage404();
+           Route::ErrorPage404();
         }
 
         // создаем контроллер
@@ -71,7 +68,7 @@ class Route
             $controller->$action();
         } else
         {
-           //Route::ErrorPage404();
+         Route::ErrorPage404();
         }
 
     }
