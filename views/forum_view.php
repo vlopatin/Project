@@ -17,8 +17,7 @@ if ($_SESSION['user'] !== "Anon") { ?>
 </div>
 
 <?php } else { ?>
-
-    <a href ="/register">New user</a>
+    <a href ="/register">New user</a> - <a href ="/login">Log in</a>
 
 <?php }?>
 

@@ -42,9 +42,9 @@ Class Controller_Forum extends Controller
             {
          echo "<div align='center'>";
 
-           echo "<b>Author:</b>" . $row['author']. "<br>";
-           echo "<b>title:</b>" . $row['title']. "<br>";
-           echo "<b>Post:</b>" . $row['message']. "<br>";
+           echo "<b>Author: </b>" . $row['author']. "<br>";
+           echo "<b>title: </b>" . $row['title']. "<br>";
+           echo "<b>Post: </b>" . $row['message']. "<br>";
 
 
            if ($row['author'] == $_SESSION['user']) {

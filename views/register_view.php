@@ -8,7 +8,7 @@
 ini_set('display_errors', 1);
 ?>
 <div align="center">
-    <a href ="/login">Log in</a> -  <a href ="/forum/Guest">Guest</a>
+    <a href ="/login">Log in</a> - <a href ="/forum/Guest">Guest</a>
 </div>
 
 
@@ -39,19 +39,20 @@ ini_set('display_errors', 1);
 
 if (!isset($_REQUEST['doReg']) || $errReg == true) {?>
 
-    <form action = "register" method="post" >
+    <form action = "register" method="post">
+<table>
+    <tr>
+        <td><b>login:<b></td> <td><input type="text" name="login" required="1" value=""></b></td></tr>
 
-        <b>login:<b> <input type="text" name="login" required="1" value=""><br><br>
+                <tr><td><b>password:</b></td><td> <input type="password" name="passwd" required="1"></td></tr>
 
-                <b>password:<b> <input type="password" name="passwd" required="1"><br><br>
+                        <tr><td><b>confirm:</b></td><td> <input type="password" name="passwdConfirm" value="" required="1"></td></tr>
 
-                       <b>confirm:<b> <input type="password" name="passwdConfirm" value="" required="1"><br><br>
+                                <tr><td><b>name:</b></td><td><input type="text" name="name" required="1" value=""></td></tr>
 
-                                <b>name:<b> <input type="text" name="name" required="1" value=""><br><br>
+                                        <tr><td><b>lastname:</b></td><td><input type="text" name="lastname" required="1" value=""></td></tr>
 
-                                        <b>lastname:<b><input type="text" name="lastname" required="1" value=""><br><br>
-
-                                                <input type="submit" name="doReg" value="   OK   "><br>
+                                            <tr><td></td> <td align="center"> <input type="submit" name="doReg" value="   OK   "></td></tr>
 
     </form>
 </div>
