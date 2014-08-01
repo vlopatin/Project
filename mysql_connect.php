@@ -15,9 +15,13 @@ $server = "localhost";
 
 $mysqli = new mysqli($server, $user, $pass, $db);
 if ($mysqli->connect_error)
+<<<<<<< HEAD
 {
+=======
+ {
+>>>>>>> d3ad72dbe38471712db5108b8f7bda870507798f
     die('Connect Error (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error);
-}
+ }
 
 $sql = "CREATE DATABASE $db";
 mysqli_query($mysqli, $sql);
@@ -25,6 +29,7 @@ mysqli_query($mysqli, $sql);
 $sql = "CREATE TABLE if not exists logins(pid INT NOT NULL AUTO_INCREMENT, PRIMARY KEY(pid), login CHAR(10), name CHAR(10), lastname CHAR(10), password CHAR(10))";
 mysqli_query($mysqli, $sql);
 //$mysqli->close();
+<<<<<<< HEAD
 
 /**
  * @return mysqli
@@ -70,3 +75,6 @@ function mysqli_get() {
 
 ?>
 
+=======
+?>
+>>>>>>> d3ad72dbe38471712db5108b8f7bda870507798f

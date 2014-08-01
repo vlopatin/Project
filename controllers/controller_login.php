@@ -30,8 +30,7 @@ class Controller_Login extends controller
                  header( 'Refresh: 0; "forum" ' );
        }
 
-
-     }
+    }
 }
 
 ?>

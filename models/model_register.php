@@ -1,8 +1,6 @@
 <?php
-
 Class Model_Register extends Model
 {
-
     static function is_login_free($loginToCheck)
     {
         $sql = " SELECT * FROM logins WHERE login = '$loginToCheck' ";
@@ -32,4 +30,3 @@ Class Model_Register extends Model
 }
 
 ?>
-
