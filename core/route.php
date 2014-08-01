@@ -53,7 +53,7 @@ class Route
             require_once "controllers/" . $controller_file;
         } else
         {
-           Route::ErrorPage404();
+      //     Route::ErrorPage404();
 	}
         // create controller with action
         $controller = new $controller_name;
@@ -65,7 +65,7 @@ class Route
             $controller->$action();
         } else
         {
-         Route::ErrorPage404();
+     //    Route::ErrorPage404();
         }
 
     }

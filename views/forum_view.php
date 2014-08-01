@@ -10,6 +10,8 @@
  <!--   <a href ="/register">New user</a> - <a href ="/forum/Guest">Guest</a> -->
 
 
+
+
 <?php
 if ($_SESSION['user'] !== "Anon") { ?>
     <a href ="/profile">Profile</a> - <a href ="/forum/Guest">Logout</a>
@@ -34,13 +36,33 @@ if (isset($_POST['delDo'])) {
 
 if (isset($_POST['doAddPost'])) {
     Controller_Forum::action_add_post($_SESSION['user'], $_POST['title'], $_POST['message']);
-}
+    }
+?>
+
+<p align="center">Total posts: <?php print (Controller_Forum::get_posts_number()); ?></p>
 
 
 
-Controller_Forum::show_all_posts();
+
+<?php
+
+if (isset($_POST['page'])) {
+
+    $_SESSION['page'] = $_POST['page'];
+
+    Controller_Forum::show_all_posts($_POST['page']);
+  //  print_r($_POST['page']);
+
+} else {
+Controller_Forum::show_all_posts();}
+
+//print_r($_POST['page']);
+
+Controller_Forum::show_pages();
+
 
 ?>
+
 
 
 
@@ -95,7 +117,12 @@ if ($_SESSION['user'] !== "Anon") {
 } else { ?>
         <h3 align="center">Please register to post...</h3><?php } ?>
 
+<?php
 
+
+
+
+?>
 
 
 

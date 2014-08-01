@@ -8,7 +8,7 @@
 
 
 
-/**function add_new_post($author, $title, $message)
+function add_new_post($author, $title, $message)
 {
     $mysqli = mysqli_get();
     $author = mysqli_real_escape_string($mysqli, $author);
@@ -17,6 +17,6 @@
 
     $sql = "INSERT INTO posts (pid, author, title, message) VALUES (NULL, '$author', '$title', '$message' ) ";
     mysqli_query($mysqli, $sql);
-} */
+}
 
 ?>
