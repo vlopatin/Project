@@ -5,7 +5,7 @@
  * Date: 29.07.14
  * Time: 13:12
  */
-class controller {
+abstract class controller {
 
     public $model;
     public $view;

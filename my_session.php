@@ -11,7 +11,7 @@ function session_init ($user_login) {
    // session_start();
 
     $_SESSION['user'] = $user_login;
-
+    $_SESSION['forumCurrPage'] = 1;
 
 }
 

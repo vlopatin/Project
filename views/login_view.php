@@ -1,7 +1,12 @@
 <?php
 
+if ($_SESSION['user']!=='Anon') {
+    header( 'Refresh: 0; "forum" ' );
+}
 
 ?>
+
+
 <div align="center">
 <a href ="/register">New user</a> - <a href ="/forum/Guest">Guest</a>
     </div>
@@ -13,13 +18,32 @@
 <div align="center" border=5>
 
     <form action="login" method="post">
-        <b>login:</b>
-        <input type="text" name="login" size="15" value="<?php if ( isset($_SESSION['user']) && $_SESSION['user'] !== "Anon" ) print ($_SESSION['user'])?>" required="true"><br><br>
-        <b>password:</b>
-        <input type="password" name="password" size="15" required="true"><br><br>
-        <input type="submit" name="doGo" value="sign in"><br><br>
+<table>
+    <tr>
+        <td align="right">
+      <!--      <b>login:</b> -->
+        </td>
+        <td>
+            <input type="text" placeholder="Name" name="login" size="15" value="<?php if ( isset($_SESSION['user']) && $_SESSION['user'] !== "Anon" ) print ($_SESSION['user'])?>" required="true">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <!--     <b>password:</b> -->
+        </td>
+        <td>
+            <input type="password" placeholder="Password" name="password" size="15" required="true">
+        </td>
+    </tr>
+    <tr align="center">
+        <td></td>
+        <td >
+            <input type="submit" name="doGo" value="sign in">
+        </td>
+    </tr>
+</table>
     </form>
-
+<hr width="30%">
 
 <br>
     <?php

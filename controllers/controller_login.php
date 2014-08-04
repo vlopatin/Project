@@ -25,7 +25,7 @@ class Controller_Login extends controller
 
         if (!($row = mysqli_fetch_assoc($r))) {
 
-            echo "<h2>Wrong user name or password !</h2>";
+            echo "<h3><i>Wrong user name or password !</i></h3>";
         } else { session_init($login);
                  header( 'Refresh: 0; "forum" ' );
        }
