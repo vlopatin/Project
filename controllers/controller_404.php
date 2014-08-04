@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: vlopatin
@@ -12,8 +13,6 @@ class controller_404 extends controller
         $this->view->generate('404_view.php', 'template_view.php');
     }
 }
-
-
 
 
 ?>

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: vlopatin
@@ -18,7 +19,8 @@ class View
         }
         */
 
-        include 'views/'.$template_view;
+        include 'views/' . $template_view;
     }
 }
+
 ?>

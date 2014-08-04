@@ -1,11 +1,11 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: vlopatin
  * Date: 29.07.14
  * Time: 13:22
  */
-
 class Controller_Login extends controller
 {
     function action_index()
@@ -26,9 +26,10 @@ class Controller_Login extends controller
         if (!($row = mysqli_fetch_assoc($r))) {
 
             echo "<h3><i>Wrong user name or password !</i></h3>";
-        } else { session_init($login);
-                 header( 'Refresh: 0; "forum" ' );
-       }
+        } else {
+            session_init($login);
+            header('Refresh: 0; "forum" ');
+        }
 
     }
 }

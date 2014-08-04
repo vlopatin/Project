@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Forum</title>
-    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
 </head>
 <h1 align="center">Welcome to Forum</h1>
 <hr width="70%">
@@ -11,7 +11,7 @@
 
 <?php
 
-include 'views/'.$content_view;
+include 'views/' . $content_view;
 
 ?>
 

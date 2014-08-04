@@ -6,7 +6,8 @@
  * Time: 17:40
  */
 
-function mysqli_get() {
+function mysqli_get()
+{
     static $conn;
 
     if (is_null($conn)) {
@@ -26,8 +27,7 @@ function mysqli_get() {
         $sql = "CREATE TABLE if not exists posts(pid INT NOT NULL AUTO_INCREMENT, PRIMARY KEY(pid), author CHAR(10), title CHAR(15), message CHAR(95))";
         mysqli_query($conn, $sql);
 
-        if ($conn->connect_error)
-        {
+        if ($conn->connect_error) {
             die('Connect Error (' . $conn->connect_errno . ') ' . $conn->connect_error);
         }
     }

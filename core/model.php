@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: vlopatin
@@ -7,9 +8,9 @@
  */
 abstract class Model
 {
-  //  public function get_data()
-  //  {
-  //  }
+    //  public function get_data()
+    //  {
+    //  }
 }
 
 ?>

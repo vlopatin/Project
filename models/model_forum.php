@@ -7,7 +7,6 @@
  */
 
 
-
 function add_new_post($author, $title, $message)
 {
     $mysqli = mysqli_get();

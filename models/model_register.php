@@ -1,4 +1,5 @@
 <?php
+
 Class Model_Register extends Model
 {
     static function is_login_free($loginToCheck)
@@ -8,9 +9,11 @@ Class Model_Register extends Model
         $result = mysqli_query($mysqli, $sql);
 
 
-        if (!($row = mysqli_fetch_assoc($result)))
-            { return true; } else
-                                { return false; }
+        if (!($row = mysqli_fetch_assoc($result))) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     static function add_new_user($login, $name, $lastname, $password)

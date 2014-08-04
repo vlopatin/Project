@@ -1,16 +1,15 @@
 <?php
 
-if ($_SESSION['user']!=='Anon') {
-    header( 'Refresh: 0; "forum" ' );
+if ($_SESSION['user'] !== 'Anon') {
+    header('Refresh: 0; "forum" ');
 }
 
 ?>
 
 
 <div align="center">
-<a href ="/register">New user</a> - <a href ="/forum/Guest">Guest</a>
-    </div>
-
+    <a href="/register">New user</a> - <a href="/forum/Guest">Guest</a>
+</div>
 
 
 <h2 align="center">Войдите или зарегистрируйтесь</h2>
@@ -18,34 +17,36 @@ if ($_SESSION['user']!=='Anon') {
 <div align="center" border=5>
 
     <form action="login" method="post">
-<table>
-    <tr>
-        <td align="right">
-      <!--      <b>login:</b> -->
-        </td>
-        <td>
-            <input type="text" placeholder="Name" name="login" size="15" value="<?php if ( isset($_SESSION['user']) && $_SESSION['user'] !== "Anon" ) print ($_SESSION['user'])?>" required="true">
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <!--     <b>password:</b> -->
-        </td>
-        <td>
-            <input type="password" placeholder="Password" name="password" size="15" required="true">
-        </td>
-    </tr>
-    <tr align="center">
-        <td></td>
-        <td >
-            <input type="submit" name="doGo" value="sign in">
-        </td>
-    </tr>
-</table>
+        <table>
+            <tr>
+                <td align="right">
+                    <!--      <b>login:</b> -->
+                </td>
+                <td>
+                    <input type="text" placeholder="Name" name="login" size="15"
+                           value="<?php if (isset($_SESSION['user']) && $_SESSION['user'] !== "Anon") print ($_SESSION['user']) ?>"
+                           required="true">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <!--     <b>password:</b> -->
+                </td>
+                <td>
+                    <input type="password" placeholder="Password" name="password" size="15" required="true">
+                </td>
+            </tr>
+            <tr align="center">
+                <td></td>
+                <td>
+                    <input type="submit" name="doGo" value="sign in">
+                </td>
+            </tr>
+        </table>
     </form>
-<hr width="30%">
+    <hr width="30%">
 
-<br>
+    <br>
     <?php
 
     if (isset($_POST['doGo'])) Controller_Login::action_signIn();

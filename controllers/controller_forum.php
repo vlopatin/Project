@@ -17,7 +17,7 @@ Class Controller_Forum extends Controller
     function action_guest()
     {
         $_SESSION['user'] = "Anon";
-        header('Refresh: 0; "/forum" ');
+        header('Refresh: 0; "/forum&page=1" ');
     }
 
     function action_add_post($author, $title, $message)
@@ -41,17 +41,20 @@ Class Controller_Forum extends Controller
     function show_all_posts($page = 1)
     {
         $mysqli = mysqli_get();
-        $sql = " SELECT * FROM posts LIMIT " . ($page - 1) * DEFAULT_NUMBER_POSTS_ON_PAGE . ", " . DEFAULT_NUMBER_POSTS_ON_PAGE;
+        $sql = " SELECT * FROM posts ORDER BY pid desc LIMIT " . ($page-1) * DEFAULT_NUMBER_POSTS_ON_PAGE . ", " . DEFAULT_NUMBER_POSTS_ON_PAGE;
         $result = mysqli_query($mysqli, $sql);
+
+        //JQuery Accordion
+
+        echo "<div id='accordion' align='center'>";
 
         while ($row = mysqli_fetch_assoc($result)) {
 
-            echo "<div align='center'>";
-            echo $row['pid'];
-            echo "<br>";
-            echo "<b>Author: </b>" . $row['author'] . "<br>";
-            echo "<b>title: </b>" . $row['title'] . "<br>";
-            echo "<b>Post: </b>" . $row['message'] . "<br>";
+            // echo $row['pid'];
+            //          echo "<br>";
+            echo "<h3 align='center'><b>Title: </b>" . $row['title'] . "<b> Author:</b>" . $row['author'] . "</h3>";
+            echo "<div>";
+            echo "<b>Message: </b>" . $row['message'] . "<br>";
 
 
             if ($row['author'] == $_SESSION['user']) {
@@ -61,14 +64,10 @@ Class Controller_Forum extends Controller
                 echo "</form>";
             }
 
-
-            echo "<hr width='25%'>";
-
             echo "</div>";
 
-            //print ($row['title']);
-
         }
+        echo "</div>";
 
     }
 
@@ -89,7 +88,6 @@ Class Controller_Forum extends Controller
         $result = mysqli_query($mysqli, $sql);
         $numberOfRows = mysqli_fetch_row($result);
 
-        //   print_r($numberOfRows[0]);
         return ceil($numberOfRows[0] / DEFAULT_NUMBER_POSTS_ON_PAGE);
     }
 
@@ -98,12 +96,6 @@ Class Controller_Forum extends Controller
     {
 
         $numberOfPages = Controller_Forum::get_pages_number();
-
-        if (!isset($_GET['page'])) {
-            $_GET['page'] = 1;
-        }
-
-        //print_r(intval($numberOfRows/$postsOnPage));
         $currPage = $_GET['page'];
 
         echo "<table align='center'><tr>";
@@ -176,7 +168,6 @@ Class Controller_Forum extends Controller
             echo "<td><a href='forum&page=" . ($_GET['page'] + 1) . " '> next </a></td>";
             echo "<td><a href='forum&page=$numberOfPages'> last </a></td>";
         }
-
 
         echo "</tr></table>";
         echo "</div>";

@@ -16,15 +16,13 @@ abstract class Route
         $action_name = DEFAULT_ACTION;
 
         // debugging
-        var_dump($_GET);
+        //var_dump($_GET);
         echo "<br>";
         // print_r($_GET);
-        //$routes = explode('/', $_SERVER['REQUEST_URI']);
-
         if (isset($_GET['q'])) $routes = explode('/', $_GET['q']);
 
 
-                    //  default settings
+        //  default settings
 
         //  get controller name
         if (!empty($routes[0])) {

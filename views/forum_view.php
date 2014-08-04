@@ -1,31 +1,36 @@
+<head>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script>
+        $(function () {
+            $("#accordion").accordion();
+        });
+    </script>
+</head>
+
 <?php
-/**
- * Created by PhpStorm.
- * User: vlopatin
- * Date: 29.07.14
- * Time: 13:25
- */
-?>
+// Menu
 
-<div align="center">
-
-<?php
-    // Menu
-if (intval($_GET['page']) <=0 || $_GET['page'] > Controller_Forum::get_pages_number()) $_GET['page']=1;
-
-
-
-if ($_SESSION['user'] !== "Anon") { ?>
+if (!isset($_GET['page'])) {
+    $_GET['page'] = 1;
+} elseif (intval($_GET['page']) <= 0 || $_GET['page'] > Controller_Forum::get_pages_number()) {
+    $_GET['page'] = 1;
+}
+echo "<div align='center'>";
+if ($_SESSION['user'] !== "Anon") {
+    ?>
     <a href="/profile">Profile</a> - <a href="/forum/Guest">Logout</a>
-</div>
-
-
 
 <?php } else { ?>
     <a href="/register">New user</a> - <a href="/login">Log in</a>
 
 <?php
 }
+
+echo "</div><br>";
+Controller_Forum::show_pages();
 
 // delete message
 if (isset($_POST['delDo'])) {
@@ -41,20 +46,12 @@ if (isset($_POST['doAddPost'])) {
 
 <h3 align="center">You are logged in
     as <?php if (isset($_SESSION['user'])) print_r($_SESSION['user']); ?> !</h3>
-<hr width='25%'>
-
-
-<!-- <p align="center">Total posts: <?php //  print (Controller_Forum::get_posts_number()*); ?></p> -->
 
 
 <?php
 
 if (isset($_GET['page'])) {
-    //$_SESSION['page'] = $_POST['page'];
     Controller_Forum::show_all_posts($_GET['page']);
-
-    // print_r($_POST['page']);
-
 } else {
     Controller_Forum::show_all_posts(1);
 }
@@ -63,7 +60,7 @@ Controller_Forum::show_pages();
 
 if ($_SESSION['user'] !== "Anon") {
 
-?>
+    ?>
 
     <form action="forum" method="post">
         <table align="center">
@@ -88,8 +85,6 @@ if ($_SESSION['user'] !== "Anon") {
                 </td>
                 <td>
                     <input type="submit" name="doAddPost" value="Submit">
-                    <!--      <input type="button" name="doEditPost" value="Edit">
-                              <input type="button" name="doDelPost" value="Delete"> -->
                 </td>
             </tr>
         </table>
@@ -99,8 +94,9 @@ if ($_SESSION['user'] !== "Anon") {
 
 } else {
 
-?>
-    <h3 align="center">Please register to post...</h3><?php }
+    ?>
+    <h3 align="center">Please register to post...</h3><?php
+}
 
 
 
