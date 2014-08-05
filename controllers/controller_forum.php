@@ -41,7 +41,7 @@ Class Controller_Forum extends Controller
     function show_all_posts($page = 1)
     {
         $mysqli = mysqli_get();
-        $sql = " SELECT * FROM posts ORDER BY pid desc LIMIT " . ($page-1) * DEFAULT_NUMBER_POSTS_ON_PAGE . ", " . DEFAULT_NUMBER_POSTS_ON_PAGE;
+        $sql = " SELECT * FROM posts ORDER BY pid desc LIMIT " . ($page - 1) * DEFAULT_NUMBER_POSTS_ON_PAGE . ", " . DEFAULT_NUMBER_POSTS_ON_PAGE;
         $result = mysqli_query($mysqli, $sql);
 
         //JQuery Accordion
@@ -54,9 +54,15 @@ Class Controller_Forum extends Controller
             //          echo "<br>";
             echo "<h3 align='center'><b>Title: </b>" . $row['title'] . "<b> Author:</b>" . $row['author'] . "</h3>";
             echo "<div>";
-            echo "<b>Message: </b>" . $row['message'] . "<br>";
+            echo "<b>Message: </b>" . $row['message'];
+            echo "<br><br>";
+
+          //echo "<img src='img/disslike.jpg' id='" . $row['pid'] . "' alt='like' width='50'>";
+            echo "<img onclick='clickLike()' src='img/like.jpg' class='like' id='" . $row['pid'] . "' alt='like' width='50'>";
 
 
+
+            echo "<br><br><br>";
             if ($row['author'] == $_SESSION['user']) {
                 echo "<form method='post' action='forum'>";
                 echo "<input type='submit' name = 'delDo' value ='delete' >";
@@ -162,8 +168,6 @@ Class Controller_Forum extends Controller
         }
 
         if ($_GET['page'] < $numberOfPages) {
-            echo "";
-
             echo "<td>...</td>";
             echo "<td><a href='forum&page=" . ($_GET['page'] + 1) . " '> next </a></td>";
             echo "<td><a href='forum&page=$numberOfPages'> last </a></td>";

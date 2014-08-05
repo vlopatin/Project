@@ -1,8 +1,10 @@
 <head>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
-    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
-    <link rel="stylesheet" href="/resources/demos/style.css">
+    <!-- <script src="//code.jquery.com/jquery-1.10.2.js"></script> -->
+        <script src="jquery-2.1.1.js"></script>
+        <script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+        <script src="script.js"></script>
+        <!--<link rel="stylesheet" href="/resources/demos/style.css"> -->
     <script>
         $(function () {
             $("#accordion").accordion();
@@ -11,6 +13,7 @@
 </head>
 
 <?php
+
 // Menu
 
 if (!isset($_GET['page'])) {
@@ -25,6 +28,7 @@ if ($_SESSION['user'] !== "Anon") {
 
 <?php } else { ?>
     <a href="/register">New user</a> - <a href="/login">Log in</a>
+
 
 <?php
 }
@@ -96,7 +100,8 @@ if ($_SESSION['user'] !== "Anon") {
 
     ?>
     <h3 align="center">Please register to post...</h3><?php
-}
+
+} ?>
 
 
 
