@@ -16,21 +16,14 @@ class Controller_Login extends controller
     function action_signIn()
     {
 
-        $login = $_POST['login'];
-        $pass = $_POST['password'];
-
-        $sql = " SELECT * FROM logins WHERE login = '$login' AND password = '$pass' ";
-        $mysqli = mysqli_get();
-        $r = mysqli_query($mysqli, $sql);
-
-        if (!($row = mysqli_fetch_assoc($r))) {
-
+        $result = Model_Login::is_registered($_POST['login'], $_POST['password']);
+        
+        if (!($row = mysqli_fetch_assoc($result))) {
             echo "<h3><i>Wrong user name or password !</i></h3>";
         } else {
             session_init($login);
             header('Refresh: 0; "forum" ');
         }
-
     }
 }
 
