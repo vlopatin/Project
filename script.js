@@ -31,8 +31,8 @@ function likeHout() {
 function unlikeClick() {
 
     //   $(this).toggle('fast');
-    idOfPost = $(this).parent().attr('id');
-    idOfUser = $(this).parent().attr('class');
+    PostId = $(this).parent().attr('id');
+    UserId = $(this).parent().attr('class');
 
     $(this).unbind('click');
     $(this).hover(likeHover, likeHout);
@@ -43,7 +43,7 @@ function unlikeClick() {
     $.ajax({
         type: 'POST',
         url: 'ajax_like/unlike',
-        data: 'postId='+idOfPost+'&userId='+idOfUser,
+        data: 'postId='+PostIdt+'&userId='+UserId,
         success: function (data) {
                $(this).parent().css("border", "1px solid red");
 
@@ -64,8 +64,8 @@ function likeClick() {
 
     //@todo переделать
     //   $(this).toggle('fast');
-    idOfPost = $(this).parent().attr('id');
-    idOfUser = $(this).parent().attr('class');
+    PostId = $(this).parent().attr('id'); 
+    UserId = $(this).parent().attr('class');
     $(this).css("opacity", "0.9")
     $(this).hover(likeHover, unlikeHout);
     $(this).unbind('click');
@@ -75,7 +75,7 @@ function likeClick() {
     $.ajax({
         type: 'POST',
         url: 'ajax_like/like',
-        data: 'postId='+idOfPost+'&userId='+idOfUser,
+        data: 'postId='+PostId+'&userId='+UserId,
         success: function (data) {
 
             //  $(this).css("border", "1px solid red");
