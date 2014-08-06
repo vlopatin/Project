@@ -5,15 +5,15 @@
  * Date: 29.07.14
  * Time: 13:26
  */
-ini_set('display_errors', 1);
 ?>
+
 <div align="center">
     <a href="/login">Log in</a> - <a href="/forum/Guest">Guest</a>
 </div>
 
 
 <div align="center"><b>
-        <?php
+    <?php
         # Errors on page
         $errReg = false;
 
@@ -41,16 +41,15 @@ ini_set('display_errors', 1);
             }
         }
 
-        ?>
-
-    </b></div>
+    ?>
+</b>
+</div>
 
 <h2 align="center">Registration form</h2>
 
 <div align="center">
 
     <?php
-
     if (!isset($_REQUEST['doReg']) || $errReg == true) {
     ?>
 
