@@ -22,29 +22,21 @@ Class Controller_Forum extends Controller
 
     function action_add_post($author, $title, $message)
     {
-
-        $mysqli = mysqli_get();
         $author = mysqli_real_escape_string($mysqli, $author);
         $title = mysqli_real_escape_string($mysqli, $title);
         $message = mysqli_real_escape_string($mysqli, $message);
 
-        $sql = "INSERT INTO posts (pid, author, title, message) VALUES (NULL, '$author', '$title', '$message' ) ";
-        mysqli_query($mysqli, $sql);
-
+        Model_Forum::add_new_post($author, $title, $message);
     }
 
     function empty_post()
     {
-
     }
 
     function show_all_posts($page = 1)
     {
-
-        $mysqli = mysqli_get();
-        $sql = " SELECT * FROM posts ORDER BY pid desc LIMIT " . ($page - 1) * DEFAULT_NUMBER_POSTS_ON_PAGE . ", " . DEFAULT_NUMBER_POSTS_ON_PAGE;
-        $result = mysqli_query($mysqli, $sql);
-
+        $result = Model_Forum::get_posts($page);
+        
         $sesUser = $_SESSION['user'];
 
         //JQuery Accordion
@@ -59,11 +51,8 @@ Class Controller_Forum extends Controller
             echo "<b>Message: </b>" . $row['message'];
             echo "<br><br>";
 
-            //echo "<img src='img/disslike.jpg' id='" . $row['pid'] . "' alt='like' width='50'>";
-
-
             // if post is not liked by current user - show like_button
-            if (!is_post_liked($sesUser, $row['pid']) && ($sesUser !== $row['author'])) {
+            if (!Model_Forum::is_post_liked($sesUser, $row['pid']) && ($sesUser !== $row['author'])) {
             //if (($sesUser !== $row['author'])) {
                 echo "<img src='img/like.jpg' class='like' alt='like' width='50'>";
             } else {
@@ -71,9 +60,7 @@ Class Controller_Forum extends Controller
             }
 
             echo "<div class='status'>";
-            //if (get_likes_number($row['pid']) > 0) {
-                echo "      Total likes: " . get_likes_number($row['pid']);
-           // }
+            echo "Total likes: " . get_likes_number($row['pid']);
             echo "</div>";
             echo "<br><br>";
 
@@ -93,24 +80,16 @@ Class Controller_Forum extends Controller
 
     function del_message($pid)
     {
-        $mysqli = mysqli_get();
-        $sql = " DELETE FROM posts WHERE pid = '$pid' ";
-        mysqli_query($mysqli, $sql);
-
+        Model_Forum::delete_post($pid);
     }
-
-// return number of posts in base
 
     function get_pages_number()
     {
-        $mysqli = mysqli_get();
-        $sql = " SELECT COUNT(*) FROM posts ";
-        $result = mysqli_query($mysqli, $sql);
+        $result = Model_Forum::get_posts_number();
         $numberOfRows = mysqli_fetch_row($result);
 
         return ceil($numberOfRows[0] / DEFAULT_NUMBER_POSTS_ON_PAGE);
     }
-
 
     function show_pages()
     {
@@ -157,8 +136,6 @@ Class Controller_Forum extends Controller
 
             case ($numberOfPages - 1):
             {
-
-                // echo "<td> $numberOfPages - 1 </td>";
 
                 for ($i = ($numberOfPages - 4); $i < ($numberOfPages - 1); $i++) {
                     echo "<td><a href='forum&page=$i'>  $i  </a></td>";
