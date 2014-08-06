@@ -1,13 +1,12 @@
 <?php
 
-Class Model_Register extends Model
+abstract Class Model_Register extends Model
 {
     static function is_login_free($loginToCheck)
     {
-        $sql = " SELECT * FROM logins WHERE login = '$loginToCheck' ";
         $mysqli = mysqli_get();
+        $sql = " SELECT * FROM logins WHERE login = '$loginToCheck' ";
         $result = mysqli_query($mysqli, $sql);
-
 
         if (!($row = mysqli_fetch_assoc($result))) {
             return true;
