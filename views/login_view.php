@@ -23,9 +23,7 @@ if ($_SESSION['user'] !== 'Anon') {
                     <!--      <b>login:</b> -->
                 </td>
                 <td>
-                    <input type="text" placeholder="Name" name="login" size="15"
-                           value="<?php if (isset($_SESSION['user']) && $_SESSION['user'] !== "Anon") print ($_SESSION['user']) ?>"
-                           required="true">
+                    <input type="text" placeholder="Name" name="login" size="15" required="true">
                 </td>
             </tr>
             <tr>
@@ -47,6 +45,7 @@ if ($_SESSION['user'] !== 'Anon') {
     <hr width="30%">
 
     <br>
+
     <?php
 
     if (isset($_POST['doGo'])) Controller_Login::action_signIn();
