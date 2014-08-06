@@ -27,6 +27,10 @@ function mysqli_get()
         $sql = "CREATE TABLE if not exists posts(pid INT NOT NULL AUTO_INCREMENT, PRIMARY KEY(pid), author CHAR(10), title CHAR(15), message CHAR(95))";
         mysqli_query($conn, $sql);
 
+        $sql = "CREATE TABLE if not exists likes(pidPost INT NOT NULL, login CHAR(10) NOT NULL)";
+        mysqli_query($conn, $sql);
+
+
         if ($conn->connect_error) {
             die('Connect Error (' . $conn->connect_errno . ') ' . $conn->connect_error);
         }

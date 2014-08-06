@@ -40,30 +40,44 @@ Class Controller_Forum extends Controller
 
     function show_all_posts($page = 1)
     {
+
         $mysqli = mysqli_get();
         $sql = " SELECT * FROM posts ORDER BY pid desc LIMIT " . ($page - 1) * DEFAULT_NUMBER_POSTS_ON_PAGE . ", " . DEFAULT_NUMBER_POSTS_ON_PAGE;
         $result = mysqli_query($mysqli, $sql);
 
-        //JQuery Accordion
+        $sesUser = $_SESSION['user'];
 
+        //JQuery Accordion
         echo "<div id='accordion' align='center'>";
 
         while ($row = mysqli_fetch_assoc($result)) {
 
-            // echo $row['pid'];
-            //          echo "<br>";
             echo "<h3 align='center'><b>Title: </b>" . $row['title'] . "<b> Author:</b>" . $row['author'] . "</h3>";
-            echo "<div>";
+
+            echo '<div class="user-' . $sesUser . '" id="pid-' . $row['pid'] . '"  >';
+
             echo "<b>Message: </b>" . $row['message'];
             echo "<br><br>";
 
-          //echo "<img src='img/disslike.jpg' id='" . $row['pid'] . "' alt='like' width='50'>";
-            echo "<img onclick='clickLike()' src='img/like.jpg' class='like' id='" . $row['pid'] . "' alt='like' width='50'>";
+            //echo "<img src='img/disslike.jpg' id='" . $row['pid'] . "' alt='like' width='50'>";
 
 
+            // if post is not liked by current user - show like_button
+            if (!is_post_liked($sesUser, $row['pid']) && ($sesUser !== $row['author'])) {
+            //if (($sesUser !== $row['author'])) {
+                echo "<img src='img/like.jpg' class='like' alt='like' width='50'>";
+            } else {
+                echo "You are author!";
+            }
 
-            echo "<br><br><br>";
-            if ($row['author'] == $_SESSION['user']) {
+            echo "<div class='status'>";
+            //if (get_likes_number($row['pid']) > 0) {
+                echo "      Total likes: " . get_likes_number($row['pid']);
+           // }
+            echo "</div>";
+            echo "<br><br>";
+
+            if ($row['author'] == $sesUser) {
                 echo "<form method='post' action='forum'>";
                 echo "<input type='submit' name = 'delDo' value ='delete' >";
                 echo "<input type='text' name = 'pid' value = " . $row['pid'] . " hidden>";
@@ -85,7 +99,7 @@ Class Controller_Forum extends Controller
 
     }
 
-    // return number of posts in base
+// return number of posts in base
 
     function get_pages_number()
     {

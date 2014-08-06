@@ -14,7 +14,5 @@
 include 'views/' . $content_view;
 
 ?>
-<input type="button" onclick="click12()" value="cliiiiiiiiick455">
-
 </body>
 </html>

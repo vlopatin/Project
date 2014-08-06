@@ -12,6 +12,7 @@ require "mysql_connect.php";
 require_once 'core/route.php';
 require_once 'my_session.php';
 require_once 'setting.php';
+
 session_start();
 Route::start();
 ?>
