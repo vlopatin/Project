@@ -66,33 +66,15 @@ if ($_SESSION['user'] !== "Anon") {
 
     ?>
 
-    <form action="forum" method="post">
-        <table align="center">
-            <tr>
-                <td align="right">
-                    <b>Title :</b>
-                </td>
-                <td>
-                    <input name="title" type="text" value="" required="1" size="20">
-                </td>
-            <tr>
-                <td align="right">
-                    <b>Message :</b>
-                </td>
-                <td>
-                    <textarea name="message" cols="31" rows="3" draggable="false" required="1"></textarea>
-                <td>
-            </tr>
-
-            <tr align="center">
-                <td>
-                </td>
-                <td>
-                    <input type="submit" name="doAddPost" value="Submit">
-                </td>
-            </tr>
-        </table>
+<div align=center style="background:#99FF99; width:300px; margin-left: auto; margin-right: auto;">
+	<h3 align="center" style="color:#006600">Add post</h3>
+	<form action="forum" method="post">
+		<input name="title" type="text" style="width:250px" placeholder="Title" value="" required="1" size="20"> </td>
+        <textarea name="message" placeholder="Message" style="width:250px" cols="31" rows="3" draggable="false" required="1"></textarea>
+    	<input type="submit" name="doAddPost" style="width:250px" value="Submit">
     </form>
+	<br>
+<div>
 
 <?php
 
