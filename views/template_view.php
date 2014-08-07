@@ -10,12 +10,12 @@
 * { margin:0px; padding:0px; }
 </style>
 
-<body>
+<body style="background:#CCCCFF">
 
 <div id="header" style="background:#99FF99">
 	<br>
 	<h1 align="left" style="color:#006600">Welcome to Forum</h1>
-	<hr>
+	
 </div>
 
 <?php
