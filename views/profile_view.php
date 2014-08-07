@@ -16,7 +16,7 @@
 </div>
 
 
-<div align="center">
+
 
     <div align="center"><b>
             <?php
@@ -56,48 +56,21 @@
     //if (!isset($_REQUEST['doReg']) || $errReg == true) {
     ?>
 
-    <form id="pid-<?php echo $_SESSION['user']?>" action="edit" method="post" name="editProfile">
-        <table>
-            <tr>
-                <td><b>login:<b></td>
-                <td><input type="text" name="login" required="1" value="<?php echo $_SESSION['user']; ?>" disabled="1"></b></td>
-            </tr>
+<div align=center style="background:#99FF99; width:200px; margin-left: auto; margin-right: auto;">
+	<h3 align="center" style="color:#006600">Edit Account</h3>
+	<form id="pid-<?php echo $_SESSION['user']?>" action="edit" method="post" name="editProfile">
+		<input type="text" name="login" style="width:150px" required="1" placeholder="Login" value="<?php echo $_SESSION['user']; ?>" disabled="1">
+        <input type="password" name="oldPasswd" style="width:150px" placeholder="Old password" required="1">
+        <input type="password" name="newPasswd" style="width:150px" placeholder="New password" required="1">
+        <input type="password" name="Confpasswd" style="width:150px" placeholder="Password confirm" value="" required="1">
+        <input type="text" name="name" style="width:150px" placeholder="First name" required="1" value="">
+        <input type="text" name="lastname" style="width:150px" placeholder="Last name" required="1" value="">
 
-            <tr>
-                <td><b>old password:</b></td>
-                <td><input type="password" name="oldPasswd" required="1"></td>
-            </tr>
-
-
-            <tr>
-                <td><b>new password:</b></td>
-                <td><input type="password" name="newPasswd" required="1"></td>
-            </tr>
-
-            <tr>
-                <td><b>confirm:</b></td>
-                <td><input type="password" name="Confpasswd" value="" required="1"></td>
-            </tr>
-
-            <tr>
-                <td><b>name:</b></td>
-                <td><input type="text" name="name" required="1" value=""></td>
-            </tr>
-
-            <tr>
-                <td><b>lastname:</b></td>
-                <td><input type="text" name="lastname" required="1" value=""></td>
-            </tr>
-
-            <tr>
-                <td></td>
-                <td align="center"><input type="submit" name="bSave" value="   Save   "></td>
-
-            </tr>
-        </table>
+        <input type="button" name="bReset" style="width:150px" value="Reset changes">
+		<input type="button" name="bCancel" style="width:75px" value="Cancel">
+		<input type="submit" name="bSave" style="width:75px" value="Save">
     </form>
-
-    <input type="button" name="bCancel" value="   Cancel   ">
-    <input type="button" name="bDelete" value="   Delete Account   ">
-
+	<br>
 </div>
+
+
