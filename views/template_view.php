@@ -5,14 +5,24 @@
     <title>Forum</title>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
 </head>
-<h1 align="center">Welcome to Forum</h1>
-<hr width="70%">
+
+<style type="text/css">
+* { margin:0px; padding:0px; }
+</style>
+
 <body>
+
+<div id="header" style="background:#99FF99">
+	<br>
+	<h1 align="left" style="color:#006600">Welcome to Forum</h1>
+	<hr>
+</div>
 
 <?php
 
 include 'views/' . $content_view;
 
 ?>
+
 </body>
 </html>
