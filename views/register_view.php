@@ -53,39 +53,19 @@
     if (!isset($_REQUEST['doReg']) || $errReg == true) {
     ?>
 
-    <form action="register" method="post">
-        <table>
-            <tr>
-                <td><b>login:<b></td>
-                <td><input type="text" name="login" required="1" value=""></b></td>
-            </tr>
+    <div align=center style="background:#99FF99; width:200px; margin-left: auto; margin-right: auto;">
+	<h3 align="center" style="color:#006600">Account information</h3>
+	<form action="register" method="post">
+       		<input type="text" name="login" style="width:150px" placeholder="Login" required="1" value="">
+		<input type="text" name="name" style="width:150px" placeholder="First name" required="1" value="">
+		<input type="text" name="lastname" style="width:150px" placeholder="Last name" required="1" value="">
+		<input type="password" name="passwd" style="width:150px" placeholder="Password" required="1">
+                <input type="password" name="passwdConfirm" style="width:150px" placeholder="Password confirm" value="" required="1">	
+       	        <input type="submit" name="doReg" style="width:150px" value="Send">
+	</form>
+	<br>
+</div>
 
-            <tr>
-                <td><b>password:</b></td>
-                <td><input type="password" name="passwd" required="1"></td>
-            </tr>
-
-            <tr>
-                <td><b>confirm:</b></td>
-                <td><input type="password" name="passwdConfirm" value="" required="1"></td>
-            </tr>
-
-            <tr>
-                <td><b>name:</b></td>
-                <td><input type="text" name="name" required="1" value=""></td>
-            </tr>
-
-            <tr>
-                <td><b>lastname:</b></td>
-                <td><input type="text" name="lastname" required="1" value=""></td>
-            </tr>
-
-            <tr>
-                <td></td>
-                <td align="center"><input type="submit" name="doReg" value="   OK   "></td>
-            </tr>
-        </table>
-    </form>
 </div>
 
 <?php
