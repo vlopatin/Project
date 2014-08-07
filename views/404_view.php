@@ -9,7 +9,7 @@
 ?>
 <br><br>
 
-<h1 align="center"> ERROR 404<br><br>PAGE NOT FOUND !</h1>
+<h1 align="center"> Error 404<br><br>Page not found !</h1>
 <br><br>
 
 <div align="center">
