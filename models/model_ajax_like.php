@@ -27,7 +27,6 @@ abstract class Model_Ajax_Like extends Model
         $postId = mysqli_real_escape_string($mysqli, $postId);
         $userId = mysqli_real_escape_string($mysqli, $userId);
         $sql = "DELETE FROM likes WHERE pidPost = '$postId' AND login = '$userId' ";
-
         mysqli_query($mysqli, $sql);
     }
 }

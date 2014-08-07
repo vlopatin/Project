@@ -56,7 +56,7 @@
     //if (!isset($_REQUEST['doReg']) || $errReg == true) {
     ?>
 
-    <form id='<?php echo $_SESSION['user']?>' action="edit" method="post" name="editProfile">
+    <form id="pid-<?php echo $_SESSION['user']?>" action="edit" method="post" name="editProfile">
         <table>
             <tr>
                 <td><b>login:<b></td>

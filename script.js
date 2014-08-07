@@ -32,11 +32,11 @@ function likeHout() {
 function unlikeClick() {
 
     //   $(this).toggle('fast');
-    PostId = $(this).parent().attr('id');
-    PostIdJson = PostId.substring(4);
+    var PostId = $(this).parent().attr('id');
+    var PostIdJson = PostId.substring(4);
 
-    UserId = $(this).parent().attr('class');
-    UserIdJson = UserId.split(" ");
+    var UserId = $(this).parent().attr('class');
+    var UserIdJson = UserId.split(" ");
     UserIdJson = UserIdJson[0].substring(5);
 
     Data = { "userId": UserIdJson, "postId": PostIdJson };
@@ -80,7 +80,7 @@ function likeClick() {
 
     var UserId = $(this).parent().attr('class');
     var UserIdJson = UserId.split(" ");
-    var UserIdJson = UserIdJson[0].substring(5);
+    UserIdJson = UserIdJson[0].substring(5);
 
     var Data = {'userId': UserIdJson, 'postId': PostIdJson};
 
