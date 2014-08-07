@@ -74,7 +74,7 @@ if ($_SESSION['user'] !== "Anon") {
     	<input type="submit" name="doAddPost" style="width:250px" value="Submit">
     </form>
 	<br>
-<div>
+</div>
 
 <?php
 
