@@ -36,7 +36,7 @@ Class Controller_Forum extends Controller
     function show_all_posts($page = 1)
     {
         $result = Model_Forum::get_posts($page);
-        
+
         $sesUser = $_SESSION['user'];
 
         //JQuery Accordion
@@ -51,17 +51,26 @@ Class Controller_Forum extends Controller
             echo "<b>Message: </b>" . $row['message'];
             echo "<br><br>";
 
+
+            echo "<span class='status'>";
+            echo Model_Forum::get_likes_number($row['pid']);
+            echo "  </span>";
+
             // if post is not liked by current user - show like_button
-            if (!Model_Forum::is_post_liked($sesUser, $row['pid']) && ($sesUser !== $row['author'])) {
-            //if (($sesUser !== $row['author'])) {
-                echo "<img src='img/like.jpg' class='like' alt='like' width='50'>";
+            if ($sesUser !== $row['author'] && $sesUser !== 'Anon' ) {
+                //if (($sesUser !== $row['author'])) {
+                if (Model_forum::is_post_liked($sesUser, $row['pid'])) {
+                    echo "<img src='img/like.jpg' class='unlike' alt='like' width='50'>";
+                } else {
+                    echo "<img src='img/like.jpg' class='like' alt='like' width='50'>";
+                }
             } else {
-                echo "You are author!";
+                echo "<img src='img/like.jpg' class='likeauthor' alt='like' width='50'>";
             }
 
-            echo "<div class='status'>";
-            echo "Total likes: " . get_likes_number($row['pid']);
-            echo "</div>";
+            //   echo "<div class='status'>";
+           //  echo "Total likes: " . Model_Forum::get_likes_number($row['pid']);
+
             echo "<br><br>";
 
             if ($row['author'] == $sesUser) {

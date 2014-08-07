@@ -17,10 +17,8 @@ abstract class Route
 
         // debugging
         //var_dump($_GET);
-        echo "<br>";
         // print_r($_GET);
         if (isset($_GET['q'])) $routes = explode('/', $_GET['q']);
-
 
         //  default settings
 

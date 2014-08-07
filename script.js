@@ -7,7 +7,8 @@ function init() {
 
     $(".like").hover(likeHover, likeHout);
     $(".like").click(likeClick);
-
+    $(".unlike").hover(likeHover(), unlikeHout());
+    $(".unlike").click(unlikeClick);
 }
 
 
@@ -32,7 +33,14 @@ function unlikeClick() {
 
     //   $(this).toggle('fast');
     PostId = $(this).parent().attr('id');
+    PostIdJson = PostId.substring(4);
+
     UserId = $(this).parent().attr('class');
+    UserIdJson = UserId.split(" ");
+    UserIdJson = UserIdJson[0].substring(5);
+
+    Data = { "userId": UserIdJson, "postId": PostIdJson };
+
 
     $(this).unbind('click');
     $(this).hover(likeHover, likeHout);
@@ -43,11 +51,16 @@ function unlikeClick() {
     $.ajax({
         type: 'POST',
         url: 'ajax_like/unlike',
-        data: 'postId='+PostIdt+'&userId='+UserId,
+        data: Data,
+        //   contentType: 'application/json',
         success: function (data) {
-               $(this).parent().css("border", "1px solid red");
+            //   $(this).parent().css("border", "1px solid red");
 
-            $('#' + idOfPost + ' .status').html('Total posts: '+data);
+            //data1 = $.parseJSON(data);
+            //  data = data.substring(4);
+            data = $.parseJSON(data);
+
+            $('#' + PostId + ' .status').html(data.summ + "  ");
             //$(".status").html(data);
 
 
@@ -56,34 +69,60 @@ function unlikeClick() {
         }
     });
 
-
 }
-
 
 function likeClick() {
 
     //@todo переделать
-    //   $(this).toggle('fast');
-    PostId = $(this).parent().attr('id'); 
-    UserId = $(this).parent().attr('class');
+
+    var PostId = $(this).parent().attr('id');
+    var PostIdJson = PostId.substring(4);
+
+    var UserId = $(this).parent().attr('class');
+    var UserIdJson = UserId.split(" ");
+    var UserIdJson = UserIdJson[0].substring(5);
+
+    var Data = {'userId': UserIdJson, 'postId': PostIdJson};
+
+    //PostId = PostId.substring(5);
+    //alert(UserId);
+
     $(this).css("opacity", "0.9")
     $(this).hover(likeHover, unlikeHout);
     $(this).unbind('click');
     $(this).click(unlikeClick);
-//    alert(par);
 
+
+    // alert(PostId);
+    //  alert(UserId);
+//     Data = JSON.stringify(Data);
+
+//    $.post( "ajax_like/like", Data, function( data ) {
+//        console.log(data);
+//    }, 'json');
     $.ajax({
         type: 'POST',
         url: 'ajax_like/like',
-        data: 'postId='+PostId+'&userId='+UserId,
+        //    contentType: 'application/json',
+        data: Data,
+        //  dataType: 'json',
+
+
         success: function (data) {
-
             //  $(this).css("border", "1px solid red");
-         //  $(".status").html(data);
-          //  $(this.parent()..status.html(data);
+            //  $(".status").html(data);
+            //  $(this.parent()..status.html(data);
 
-            console.log(data);
-        $('#' + idOfPost + ' .status').html('Total posts: '+data);
+            // console.log(data);
+            //alert(PostId);
+
+            //data1 = $.parseJSON(data + "");
+            //    alert(data);
+
+
+            data = $.parseJSON(data);
+            //       alert(data.summ);
+            $('#' + PostId + ' .status').html(data.summ + "  ");
 
             //$(this).attr({src:"img/404.jpg", alt:"Your vote was accepted!"+data});
             // alert($(this).parent().parent().attr('src'));
