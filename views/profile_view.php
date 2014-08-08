@@ -7,9 +7,9 @@
 </head>
 
 
-<h1 align="center">Profile</h1>
+<!--<h1 align="center">Profile</h1>-->
 
-<div align="center">
+<div align="center" style="background:#CCFFCC">
 
     <a href="/login">Log in</a> - <a href="/forum/Guest">Forum Guest</a>
 
@@ -56,21 +56,26 @@
     //if (!isset($_REQUEST['doReg']) || $errReg == true) {
     ?>
 
-<div align=center style="background:#99FF99; width:200px; margin-left: auto; margin-right: auto;">
-	<h3 align="center" style="color:#006600">Edit Account</h3>
-	<form id="pid-<?php echo $_SESSION['user']?>" action="edit" method="post" name="editProfile">
-		<input type="text" name="login" style="width:150px" required="1" placeholder="Login" value="<?php echo $_SESSION['user']; ?>" disabled="1">
-        <input type="password" name="oldPasswd" style="width:150px" placeholder="Old password" required="1">
-        <input type="password" name="newPasswd" style="width:150px" placeholder="New password" required="1">
-        <input type="password" name="Confpasswd" style="width:150px" placeholder="Password confirm" value="" required="1">
-        <input type="text" name="name" style="width:150px" placeholder="First name" required="1" value="">
-        <input type="text" name="lastname" style="width:150px" placeholder="Last name" required="1" value="">
-
-        <input type="button" name="bReset" style="width:150px" value="Reset changes">
-		<input type="button" name="bCancel" style="width:75px" value="Cancel">
-		<input type="submit" name="bSave" style="width:75px" value="Save">
-    </form>
+<div align=center style="background:#99FF99; width:16%; margin-left: auto; margin-right: auto; position:absolute; left:42%; top:20%;">
 	<br>
+    <h3 align="center" style="color:#006600">Edit Account</h3>
+    <br>
+    <img src='img/indus.jpg' class='unlike' alt='like' width='100'>
+    <br>
+    <br>
+	<form id="pid-<?php echo $_SESSION['user']?>" action="edit" method="post" name="editProfile">
+		<input type="text" name="login" style="width:70%" required="1" placeholder="Login" value="<?php echo $_SESSION['user']; ?>" disabled="1">
+<!--        <input type="password" name="oldPasswd" style="width:70%" placeholder="Old password" required="1">-->
+<!--        <input type="password" name="newPasswd" style="width:70%" placeholder="New password" required="1">-->
+<!--        <input type="password" name="Confpasswd" style="width:70%" placeholder="Password confirm" value="" required="1">-->
+        <input type="text" name="name" style="width:70%" placeholder="First name" required="1" value="">
+        <input type="text" name="lastname" style="width:70%" placeholder="Last name" required="1" value="">
+
+        <input type="button" name="bReset" style="width:70%" value="Reset changes">
+		<input type="button" name="bCancel" style="width:34%" value="Cancel">
+		<input type="submit" name="bSave" style="width:34%" value="Save">
+    </form>
+	<br><br>
 </div>
 
 

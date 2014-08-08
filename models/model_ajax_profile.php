@@ -6,7 +6,7 @@
  * Date: 07.08.14
  * Time: 18:10
  */
-abstract class Model_Ajax_Reset extends Model
+abstract class Model_Ajax_Profile extends Model
 {
     function get_data($userId)
     {

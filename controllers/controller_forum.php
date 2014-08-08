@@ -11,7 +11,6 @@ Class Controller_Forum extends Controller
     function action_index()
     {
         $this->view->generate('forum_view.php', 'template_view.php');
-
     }
 
     function action_guest()
@@ -22,9 +21,10 @@ Class Controller_Forum extends Controller
 
     function action_add_post($author, $title, $message)
     {
+        $mysqli = mysqli_get();
         $author = mysqli_real_escape_string($mysqli, $author);
         $title = mysqli_real_escape_string($mysqli, $title);
-        $message = mysqli_real_escape_string($mysqli, $message);
+        //  $message = mysqli_real_escape_string($mysqli, $message);
 
         Model_Forum::add_new_post($author, $title, $message);
     }
@@ -40,56 +40,108 @@ Class Controller_Forum extends Controller
         $sesUser = $_SESSION['user'];
 
         //JQuery Accordion
-        echo "<div id='accordion' align='center'>";
+        echo "<div id='accordion' align='center' style='background:#99FF99; width:40%; margin-left: auto; margin-right: auto; '>";
 
         while ($row = mysqli_fetch_assoc($result)) {
 
-            echo "<h3 align='center'><b>Title: </b>" . $row['title'] . "<b> Author:</b>" . $row['author'] . "</h3>";
+//            echo "<h1 align='center'>Title: " . $row['title'] . "Author: " . $row['author'] . "</h1>";
+            echo "<h6 align='center'>Title: " . $row['title'] . ", Author: " . $row['author'] . "</h6>";
+            echo '<div class="user-' . $sesUser . '" id="pid-' . $row['pid'] . '"' . '"' . '>';
 
-            echo '<div class="user-' . $sesUser . '" id="pid-' . $row['pid'] . '"  >';
+            echo "<span border: 2px solid red>";
+            echo $row['message'];
+//            echo "Message: " . $row['message'];
+            echo "</span>";
 
-            echo "<b>Message: </b>" . $row['message'];
-            echo "<br><br>";
+            echo "<br>";
 
+            //  echo "<div>";
 
-            echo "<span class='status'>";
-            echo Model_Forum::get_likes_number($row['pid']);
-            echo "  </span>";
-
+            echo '<div align="right" style="float:right; width: 50%;">';
             // if post is not liked by current user - show like_button
-            if ($sesUser !== $row['author'] && $sesUser !== 'Anon' ) {
+
+//            if ($row['author'] == $sesUser) {
+//                echo "<span class='status' style='font-size: 20px; color:#FF0000;'>";
+//                echo '<a style="font-size: 20px; color:#FF0000;" href="/forum/delete">Delete</a>';
+//                echo "  </span>";
+//            }
+
+
+            if ($sesUser !== $row['author'] && $sesUser !== 'Anon') {
                 //if (($sesUser !== $row['author'])) {
                 if (Model_forum::is_post_liked($sesUser, $row['pid'])) {
-                    echo "<img src='img/like.jpg' class='unlike' alt='like' width='50'>";
+                    echo "<img src='img/like2.jpg' class='unlike' alt='like' width='30'>";
                 } else {
-                    echo "<img src='img/like.jpg' class='like' alt='like' width='50'>";
+                    echo "<img src='img/like2.jpg' class='like' alt='like' width='30'>";
                 }
             } else {
-                echo "<img src='img/like.jpg' class='likeauthor' alt='like' width='50'>";
+                echo "<img src='img/like2.jpg' class='likeauthor' alt='like' width='30'>";
             }
 
+            //        echo "<div>";
+            echo "<span class='status' style='font-size: 30px; color:#006600;'>";
+            echo " " . Model_Forum::get_likes_number($row['pid']);
+            echo "  </span>";
+            echo "</div>";
             //   echo "<div class='status'>";
-           //  echo "Total likes: " . Model_Forum::get_likes_number($row['pid']);
+            //  echo "Total likes: " . Model_Forum::get_likes_number($row['pid']);
 
-            echo "<br><br>";
+//            if ($row['author'] == $sesUser) {
+            //  echo "<br><br>";
 
+
+//
+//                echo "<form method='post' action='forum' > ";
+//                echo "<input type='submit' name = 'delDo' value ='delete' >";
+//                echo "<input type='text' name = 'pid' value = " . $row['pid'] . " hidden>";
+//                echo "</form>";
+//            }
             if ($row['author'] == $sesUser) {
-                echo "<form method='post' action='forum'>";
-                echo "<input type='submit' name = 'delDo' value ='delete' >";
-                echo "<input type='text' name = 'pid' value = " . $row['pid'] . " hidden>";
-                echo "</form>";
+                echo "<div  style='font-size: 20px; clear: both; float:right; '>";
+                echo '<span class="delete" style="font-size: 20px; color:#FF3366;">Delete</span>';
+                echo "  </div>";
             }
+
 
             echo "</div>";
+
 
         }
         echo "</div>";
 
     }
 
-    function del_message($pid)
+    function action_del_message()
     {
-        Model_Forum::delete_post($pid);
+        $data = $_GET;
+        $sesUser = $_SESSION['user'];
+
+        // var_dump(debug_backtrace());
+        // exit;
+
+
+        if (Model_Forum::is_post_owner($sesUser, $data['postId'])) {
+            Model_Forum::delete_post($data['postId']);
+        } else {
+            echo null;
+            return;
+        }
+//        try {
+//            Model_Forum::delete_post($data['postId'], $sesUser);
+//        } catch (Exception $e) {
+//            echo "$e";
+//            return;
+//        }
+//
+//        $likesSumm = Model_Ajax_Like::get_likes_number($data['postId']);
+//
+//        $response = array("summ" => $likesSumm);
+
+        //$response = json_encode($response);
+
+        echo "OK";
+        //  $pid = $_GET['id'];
+        //  $sesUser = $_SESSION['user'];
     }
 
     function get_pages_number()
@@ -175,7 +227,7 @@ Class Controller_Forum extends Controller
 
         echo "</tr></table>";
         echo "</div>";
-        echo "<br>";
+//        echo "<br>";
 
     }
 

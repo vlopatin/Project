@@ -3,12 +3,64 @@ $(document).ready(init);
 function init() {
 
     // add handlers to .like
-    // if() {}
 
+    //   $(".delete").hover(delHover(),delHout());
+    $(".delete").css('cursor', 'pointer');
+    $(".delete").click(deleteClick);
     $(".like").hover(likeHover, likeHout);
     $(".like").click(likeClick);
+    $(".like").css('cursor', 'pointer');
     $(".unlike").hover(likeHover(), unlikeHout());
     $(".unlike").click(unlikeClick);
+    $(".unlike").css('cursor', 'pointer');
+}
+
+function deleteClick() {
+
+    var PostId = $(this).parent().parent().attr('id');
+    // alert(PostId);
+    $(this).css('cursor', 'pointer');
+    PostId = PostId.substring(4);
+    //  alert(PostId);
+    var Data = { 'postId': PostId };
+
+
+    $.ajax({
+        type: 'GET',
+        url: 'forum/del_message',
+        //    contentType: 'application/json',
+        data: Data,
+        //  dataType: 'json',
+
+
+        success: function (data) {
+            //  $(this).css("border", "1px solid red");
+            //  $(".status").html(data);
+            //  $(this.parent()..status.html(data);
+
+            // console.log(data);
+            //alert(PostId);
+
+            //data1 = $.parseJSON(data + "");
+            //    alert(data);
+            //     data = $.parseJSON(data);
+
+          //  alert(data);
+
+            //$('#' + PostId + ' .status').html(" " + data.summ);
+
+            if (data != null) {
+                window.location.reload();
+           }
+            //$(this).attr({src:"img/404.jpg", alt:"Your vote was accepted!"+data});
+            // alert($(this).parent().parent().attr('src'));
+        }
+    });
+
+
+    // alert(PostId);
+
+
 }
 
 
@@ -32,10 +84,10 @@ function likeHout() {
 function unlikeClick() {
 
     //   $(this).toggle('fast');
-    var PostId = $(this).parent().attr('id');
+    var PostId = $(this).parent().parent().attr('id');
     var PostIdJson = PostId.substring(4);
 
-    var UserId = $(this).parent().attr('class');
+    var UserId = $(this).parent().parent().attr('class');
     var UserIdJson = UserId.split(" ");
     UserIdJson = UserIdJson[0].substring(5);
 
@@ -60,7 +112,7 @@ function unlikeClick() {
             //  data = data.substring(4);
             data = $.parseJSON(data);
 
-            $('#' + PostId + ' .status').html(data.summ + "  ");
+            $('#' + PostId + ' .status').html(" " + data.summ);
             //$(".status").html(data);
 
 
@@ -73,12 +125,10 @@ function unlikeClick() {
 
 function likeClick() {
 
-    //@todo переделать
-
-    var PostId = $(this).parent().attr('id');
+    var PostId = $(this).parent().parent().attr('id');
     var PostIdJson = PostId.substring(4);
 
-    var UserId = $(this).parent().attr('class');
+    var UserId = $(this).parent().parent().attr('class');
     var UserIdJson = UserId.split(" ");
     UserIdJson = UserIdJson[0].substring(5);
 
@@ -122,7 +172,7 @@ function likeClick() {
 
             data = $.parseJSON(data);
             //       alert(data.summ);
-            $('#' + PostId + ' .status').html(data.summ + "  ");
+            $('#' + PostId + ' .status').html(" " + data.summ);
 
             //$(this).attr({src:"img/404.jpg", alt:"Your vote was accepted!"+data});
             // alert($(this).parent().parent().attr('src'));

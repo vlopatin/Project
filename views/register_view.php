@@ -7,13 +7,13 @@
  */
 ?>
 
-<div align="center">
+<div align="center" style="background:#CCFFCC">
     <a href="/login">Log in</a> - <a href="/forum/Guest">Guest</a>
 </div>
 
 
 <div align="center"><b>
-    <?php
+        <?php
         # Errors on page
         $errReg = false;
 
@@ -41,32 +41,40 @@
             }
         }
 
+        ?>
+    </b>
+</div>
+
+<!--<h2 align="center">Registration form</h2>-->
+
+<!--<div align="center">-->
+
+<?php
+if (!isset($_REQUEST['doReg']) || $errReg == true) {
     ?>
-</b>
-</div>
 
-<h2 align="center">Registration form</h2>
+    <div align=center style="background:#99FF99; width:16%; margin-left: auto; margin-right: auto; position:absolute; left:42%; top:20%; ">
+        <br>
 
-<div align="center">
+        <h3 align="center" style="color:#006600">Enter account information</h3>
+        <br>
+        <img src='img/indus.jpg' class='unlike' alt='like' width='100'>
+        <br>
+        <br>
+        <form action="register" method="post">
+            <input type="text" name="login" style="width:70%" placeholder="Login" required="1" value="">
+            <input type="text" name="name" style="width:70%" placeholder="First name" required="1" value="">
+            <input type="text" name="lastname" style="width:70%" placeholder="Last name" required="1" value="">
+            <input type="password" name="passwd" style="width:70%" placeholder="Password" required="1">
+            <input type="password" name="passwdConfirm" style="width:70%" placeholder="Password confirm" value=""
+                   required="1">
 
-    <?php
-    if (!isset($_REQUEST['doReg']) || $errReg == true) {
-    ?>
+            <input type="submit" name="doReg" style="width:70%" value="Send">
+        </form>
+        <br><br>
+    </div>
 
-    <div align=center style="background:#99FF99; width:200px; margin-left: auto; margin-right: auto;">
-	<h3 align="center" style="color:#006600">Account information</h3>
-	<form action="register" method="post">
-       		<input type="text" name="login" style="width:150px" placeholder="Login" required="1" value="">
-		<input type="text" name="name" style="width:150px" placeholder="First name" required="1" value="">
-		<input type="text" name="lastname" style="width:150px" placeholder="Last name" required="1" value="">
-		<input type="password" name="passwd" style="width:150px" placeholder="Password" required="1">
-                <input type="password" name="passwdConfirm" style="width:150px" placeholder="Password confirm" value="" required="1">	
-       	        <input type="submit" name="doReg" style="width:150px" value="Send">
-	</form>
-	<br>
-</div>
-
-</div>
+    <!--</div>-->
 
 <?php
 } else {

@@ -6,14 +6,14 @@
  * Date: 07.08.14
  * Time: 18:09
  */
-Class Controller_Ajax_Reset extends controller
+Class Controller_Ajax_Profile extends controller
 {
     function action_reset()
     {
         $data = $_POST;
 
         try {
-           $result = Model_Ajax_Reset::get_data($data['userId']);
+           $result = Model_Ajax_Profile::get_data($data['userId']);
         } catch (Exception $e) {
             echo "$e";
             return;

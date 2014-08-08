@@ -19,6 +19,20 @@ abstract class Model_Forum
         mysqli_query($mysqli, $sql);
     }
 
+    function is_post_owner($user, $pid)
+    {
+        $mysqli = mysqli_get();
+        $sql = " SELECT * FROM posts WHERE pid = '$pid' AND author = '$user' ";
+        $result = mysqli_query($mysqli, $sql);
+
+        if (!$row = mysqli_fetch_assoc($result)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+
     function get_posts_number()
     {
         $mysqli = mysqli_get();

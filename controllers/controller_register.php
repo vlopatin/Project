@@ -21,9 +21,13 @@ Class Controller_Register extends controller
                 $_POST['lastname'],
                 $_POST['passwd']);
 
-            echo "<h3>Thank you!<br>
+
+            echo '<div align=center style="background:#99FF99; width:24%; margin-left: auto; margin-right: auto; position:absolute; top:20%; left:38%">';
+
+            echo "<br><h3 align='center' style='color:#006600'>Thank you!<br>
             Registration completed successfully.<br>
-            Forum is loading...</h3>";
+            Forum is loading...</h3><br>";
+            echo '</div>';
             header('Refresh: 2; "forum" ');
         } else {
             echo "Choose another login, please.";
