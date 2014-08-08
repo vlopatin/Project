@@ -51,7 +51,7 @@ if (isset($_POST['doAddPost'])) {
 }
 ?>
 
-<h3 align="center">You are logged in as <?php if (isset($_SESSION['user'])) print_r($_SESSION['user']); ?> !</h3>
+<h3 align="center" style="color: #006600; font-size: 20px">You are logged in as <?php if (isset($_SESSION['user'])) print_r($_SESSION['user']); ?> !</h3>
 <br>
 <div align=center>
     <?php Controller_Forum::show_pages(); ?>

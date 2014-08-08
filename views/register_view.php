@@ -12,7 +12,8 @@
 </div>
 
 
-<div align="center"><b>
+<div align="center" style='color: #FF3366;; font-size: 20px'>
+    <b>
         <?php
         # Errors on page
         $errReg = false;
@@ -53,7 +54,8 @@
 if (!isset($_REQUEST['doReg']) || $errReg == true) {
     ?>
 
-    <div align=center style="background:#99FF99; width:16%; margin-left: auto; margin-right: auto; position:absolute; left:42%; top:20%; ">
+    <div align=center
+         style="background:#99FF99; width:16%; margin-left: auto; margin-right: auto; position:absolute; left:42%; top:20%; ">
         <br>
 
         <h3 align="center" style="color:#006600">Enter account information</h3>
@@ -61,6 +63,7 @@ if (!isset($_REQUEST['doReg']) || $errReg == true) {
         <img src='img/indus.jpg' class='unlike' alt='like' width='100'>
         <br>
         <br>
+
         <form action="register" method="post">
             <input type="text" name="login" style="width:70%" placeholder="Login" required="1" value="">
             <input type="text" name="name" style="width:70%" placeholder="First name" required="1" value="">

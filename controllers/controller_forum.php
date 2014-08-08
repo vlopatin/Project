@@ -169,7 +169,7 @@ Class Controller_Forum extends Controller
         switch ($currPage) {
             case 1:
             {
-                echo "<td><b> 1 </b></td>";
+                echo "<td style='color: #006600; font-size: 20px'><b> 1 </b></td>";
                 for ($i = 2; $i < 6; $i++) {
                     echo "<td><a href='forum&page=$i'>  $i  </a></td>";
                 }
@@ -179,7 +179,7 @@ Class Controller_Forum extends Controller
             case 2:
             {
                 echo "<td><a href='forum&page=1'>  1  </a></td>";
-                echo "<td><b> 2 </b></td>";
+                echo "<td style='color: #006600; font-size: 20px'><b> 2 </b></td>";
                 for ($i = 3; $i < 6; $i++) {
                     echo "<td><a href='forum&page=$i'>  $i  </a></td>";
                 }
@@ -191,7 +191,7 @@ Class Controller_Forum extends Controller
                 for ($i = ($numberOfPages - 4); $i < $numberOfPages; $i++) {
                     echo "<td><a href='forum&page=$i'>  $i  </a></td>";
                 }
-                echo "<td><b> $numberOfPages </b></td>";
+                echo "<td style='color: #006600; font-size: 20px' ><b> $numberOfPages </b></td>";
                 break;
             }
 
@@ -202,7 +202,7 @@ Class Controller_Forum extends Controller
                     echo "<td><a href='forum&page=$i'>  $i  </a></td>";
                 }
 
-                echo "<td><b>" . ($numberOfPages - 1) . "</b></td>";
+                echo "<td style='color: #006600; font-size: 20px'><b>" . ($numberOfPages - 1) . "</b></td>";
                 echo "<td><a href='forum&page=$numberOfPages'>  $numberOfPages  </a></td>";
                 break;
             }
@@ -211,7 +211,7 @@ Class Controller_Forum extends Controller
                 {
                 echo "<td><a href='forum&page=" . ($currPage - 2) . "'>" . ($currPage - 2) . "</a></td>";
                 echo "<td><a href='forum&page=" . ($currPage - 1) . "'>" . ($currPage - 1) . "</a></td>";
-                echo "<td><b> $currPage </b></td>";
+                echo "<td style='color: #006600; font-size: 20px'><b> $currPage </b></td>";
                 echo "<td><a href='forum&page=" . ($currPage + 1) . "'>" . ($currPage + 1) . "</a></td>";
                 echo "<td><a href='forum&page=" . ($currPage + 2) . "'>" . ($currPage + 2) . "</a></td>";
 
