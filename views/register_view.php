@@ -65,8 +65,8 @@ if (!isset($_POST['doReg']) || $errReg == true) {
         <br>
 
         <form action="register" method="post">
-            <input type="text" name="login" style="width:70%" placeholder="Login" required="1" value="">
-            <input type="text" name="name" style="width:70%" placeholder="First name" required="1" value="">
+            <input type="text" name="login" style="width:70%" placeholder="Login" required="1" value="<?php isset$_POST['login'] ? print_r($_POST['login']) : echo ''; ?> ">
+            <input type="text" name="name" style="width:70%" placeholder="First name" required="1">
             <input type="text" name="lastname" style="width:70%" placeholder="Last name" required="1" value="">
             <input type="password" name="passwd" style="width:70%" placeholder="Password" required="1">
             <input type="password" name="passwdConfirm" style="width:70%" placeholder="Password confirm" value=""
