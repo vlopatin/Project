@@ -11,7 +11,8 @@ abstract Class Model_Login extends Model
     static function is_registered($login, $pass)
     {
         $mysqli = mysqli_get();
-        $sql = " SELECT * FROM logins WHERE login = '$login' AND password = '$pass' ";
+        $sql = " SELECT * FROM users WHERE login = '$login' AND password = MD5('$pass') ";
+
         $result = mysqli_query($mysqli, $sql);
 
         return $result;

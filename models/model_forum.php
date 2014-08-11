@@ -3,10 +3,10 @@
 abstract class Model_Forum
 {
 
-    function add_new_post($author, $title, $message)
+    function add_new_post($authorId, $title, $message)
     {
         $mysqli = mysqli_get();
-        $sql = "INSERT INTO posts (pid, author, title, message) VALUES (NULL, '$author', '$title', '$message' ) ";
+        $sql = "INSERT INTO posts (pid, authorId, title, message) VALUES (NULL, '$authorId', '$title', '$message' ) ";
         mysqli_query($mysqli, $sql);
     }
 
@@ -19,10 +19,10 @@ abstract class Model_Forum
         mysqli_query($mysqli, $sql);
     }
 
-    function is_post_owner($user, $pid)
+    function is_post_owner($userId, $pid)
     {
         $mysqli = mysqli_get();
-        $sql = " SELECT * FROM posts WHERE pid = '$pid' AND author = '$user' ";
+        $sql = " SELECT * FROM posts WHERE pid = '$pid' AND authorId = '$userId' ";
         $result = mysqli_query($mysqli, $sql);
 
         if (!$row = mysqli_fetch_assoc($result)) {
@@ -48,10 +48,10 @@ abstract class Model_Forum
     }
 
 
-    function is_post_liked($sesUser, $pidPost)
+    function is_post_liked($sesUserId, $pidPost)
     {
         $mysqli = mysqli_get();
-        $sql = " SELECT * FROM likes WHERE login = '$sesUser' AND pidPost= '$pidPost' ";
+        $sql = " SELECT * FROM likes WHERE pidUser = '$sesUserId' AND pidPost= '$pidPost' ";
         $result = mysqli_query($mysqli, $sql);
 
         if (!$row = mysqli_fetch_assoc($result)) {

@@ -7,7 +7,7 @@ abstract class Model_Ajax_Like extends Model
         $mysqli = mysqli_get();
         $postId = mysqli_real_escape_string($mysqli, $postId);
         $userId = mysqli_real_escape_string($mysqli, $userId);
-        $sql = "INSERT INTO likes (pidPost, login) VALUES ('$postId', '$userId') ";
+        $sql = "INSERT INTO likes (pidPost, pidUser) VALUES ('$postId', '$userId') ";
         mysqli_query($mysqli, $sql);
     }
 
@@ -26,7 +26,7 @@ abstract class Model_Ajax_Like extends Model
         $mysqli = mysqli_get();
         $postId = mysqli_real_escape_string($mysqli, $postId);
         $userId = mysqli_real_escape_string($mysqli, $userId);
-        $sql = "DELETE FROM likes WHERE pidPost = '$postId' AND login = '$userId' ";
+        $sql = "DELETE FROM likes WHERE pidPost = '$postId' AND pidUser = '$userId' ";
         mysqli_query($mysqli, $sql);
     }
 }

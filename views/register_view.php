@@ -19,24 +19,24 @@
         $errReg = false;
 
         # Check inputs
-        if (isset($_REQUEST['doReg'])) {
-            if (strlen($_REQUEST['login']) < 5 || strlen($_REQUEST['login']) > 10) {
+        if (isset($_POST['doReg'])) {
+            if (strlen($_POST['login']) < 5 || strlen($_POST['login']) > 10) {
                 echo "Error: Login must be in 5-10 simbols !<br>";
                 $errReg = true;
             }
-            if (strlen($_REQUEST['passwd']) < 5 || strlen($_REQUEST['login']) > 10) {
+            if (strlen($_POST['passwd']) < 5 || strlen($_POST['passwd']) > 10) {
                 echo "Error: Password must be in 5-10 simbols !<br>";
                 $errReg = true;
             }
-            if (($_REQUEST['passwd']) !== $_REQUEST['passwdConfirm']) {
+            if (($_POST['passwd']) !== $_POST['passwdConfirm']) {
                 echo "Error: Passwords do not match !<br>";
                 $errReg = true;
             }
-            if (strlen($_REQUEST['name']) < 3 || strlen($_REQUEST['name']) > 10) {
+            if (strlen($_POST['name']) < 3 || strlen($_POST['name']) > 10) {
                 echo "Error: Name must be in 3-10 simbols !<br>";
                 $errReg = true;
             }
-            if (strlen($_REQUEST['lastname']) < 3 || strlen($_REQUEST['lastname']) > 10) {
+            if (strlen($_POST['lastname']) < 3 || strlen($_POST['lastname']) > 10) {
                 echo "Error: Lastname must be in 3-10 simbols !<br>";
                 $errReg = true;
             }
@@ -51,7 +51,7 @@
 <!--<div align="center">-->
 
 <?php
-if (!isset($_REQUEST['doReg']) || $errReg == true) {
+if (!isset($_POST['doReg']) || $errReg == true) {
     ?>
 
     <div align=center

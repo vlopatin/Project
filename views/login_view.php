@@ -1,6 +1,6 @@
 <?php
 
-if ($_SESSION['user'] !== 'Anon') {
+if (isset($_SESSION['userId'])) {
     header('Refresh: 0; "forum" ');
 }
 

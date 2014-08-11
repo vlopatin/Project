@@ -21,13 +21,13 @@ function mysqli_get()
         $sql = "CREATE DATABASE $db";
         mysqli_query($conn, $sql);
 
-        $sql = "CREATE TABLE if not exists logins(pid INT NOT NULL AUTO_INCREMENT, PRIMARY KEY(pid), login CHAR(10), name CHAR(10), lastname CHAR(10), password CHAR(10))";
+        $sql = "CREATE TABLE if not exists users(pid INT NOT NULL AUTO_INCREMENT, PRIMARY KEY(pid), login CHAR(15), name CHAR(20), lastname CHAR(20), password CHAR(35))";
         mysqli_query($conn, $sql);
 
-        $sql = "CREATE TABLE if not exists posts(pid INT NOT NULL AUTO_INCREMENT, PRIMARY KEY(pid), author CHAR(10), title CHAR(15), message CHAR(95))";
+        $sql = "CREATE TABLE if not exists posts(pid INT NOT NULL AUTO_INCREMENT, PRIMARY KEY(pid), authorId INT(10), title CHAR(15), message CHAR(95))";
         mysqli_query($conn, $sql);
 
-        $sql = "CREATE TABLE if not exists likes(pidPost INT NOT NULL, login CHAR(10) NOT NULL)";
+        $sql = "CREATE TABLE if not exists likes(pidPost INT NOT NULL, pidUser INT NOT NULL)";
         mysqli_query($conn, $sql);
 
 

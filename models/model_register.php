@@ -5,7 +5,7 @@ abstract Class Model_Register extends Model
     static function is_login_free($loginToCheck)
     {
         $mysqli = mysqli_get();
-        $sql = " SELECT * FROM logins WHERE login = '$loginToCheck' ";
+        $sql = " SELECT * FROM users WHERE login = '$loginToCheck' ";
         $result = mysqli_query($mysqli, $sql);
 
         if (!($row = mysqli_fetch_assoc($result))) {
@@ -24,9 +24,9 @@ abstract Class Model_Register extends Model
         $lastname = mysqli_real_escape_string($mysqli, $lastname);
         $password = mysqli_real_escape_string($mysqli, $password);
 
-        $sql = "INSERT INTO logins (pid, login, name, lastname, password) VALUES (NULL, '$login', '$name', '$lastname', '$password' ) ";
+        $sql = "INSERT INTO users (pid, login, name, lastname, password) VALUES (NULL, '$login', '$name', '$lastname', MD5('$password')) ";
         mysqli_query($mysqli, $sql);
-        session_init($login);
+        my_session_start($login);
     }
 
 }
