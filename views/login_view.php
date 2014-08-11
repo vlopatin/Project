@@ -21,7 +21,7 @@ if (isset($_SESSION['userId'])) {
     <br>
 
     <form action="login" method="post">
-        <input type="text" style="width:70%" placeholder="Name" name="login" required="true">
+        <input type="text" style="width:70%" placeholder="Name" name="login" required="true" value="<?php isset($_POST['login']) ? print_r($_POST['login']) : print_r(''); ?>">
         <input style="width:70%" type="password" placeholder="Password" name="password" required="true">
         <input style="width:70%" type="submit" name="doGo" value="sign in">
     </form>
