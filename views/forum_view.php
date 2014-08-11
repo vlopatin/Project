@@ -185,11 +185,17 @@ if (isset($_POST['delDo'])) {
     Controller_Forum::del_message($_POST['pid']);
     //$_POST['delDo'] = NULL;
     unset($_POST['delDo']);
+    
+    //111111111111111111111111111111111111111111
+    unset($_POST);
 }
 // add message
 if (isset($_POST['doAddPost'])) {
     Controller_Forum::action_add_post($_SESSION['userId'], $_POST['title'], $_POST['message']);
     unset($_POST['doAddPost']);
+    
+    //11111111111111111111111111111
+    unset($_POST);
 }
 ?>
 
